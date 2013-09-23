@@ -22,7 +22,7 @@
 #First header group
 echo -e "\033[1m----------GENERAL_INFORMATION----------\033[0m"
 
-Displays current hostname
+#Displays current hostname
 echo -ne "\nHOSTNAME: "
 	hostname
 
