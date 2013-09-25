@@ -21,11 +21,8 @@ if [ "$(id -u)" != "0" ]; then
 		then echo "-----Create a new user-----"
 		echo -n "Enter a Username: "
 			read user
-		echo -n "Enter a Password: "
-			read pass
 		echo "Are you sure you want to create this user?"
 		echo -e "\nUsername: $user"
-		echo "Password: $pass"
 		echo -e "\n1. Yes"
 		echo "2. No"
 		echo -ne "\nPlease type a number to make your choice: "
@@ -39,7 +36,8 @@ if [ "$(id -u)" != "0" ]; then
 			done
 
 			if (( $choicetwo == 1 ))
-				then echo "Yes"
+				then useradd $user
+				passwd $user 
 			elif (( $choicetwo == 2 ))
 				then echo "-----Closing-----"
 			fi
