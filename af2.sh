@@ -6,7 +6,9 @@
 
 #This BASH script is designed to capture the users input and convert it into a
 #alphabetical grade.
+
 #The -n will prompt you for your input on the same line as the last command. 
+
 
 #Prompts user for input, saves it as variable "grade"
 echo -ne "\033[1mPlease type in your grade: \033[0m"

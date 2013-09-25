@@ -19,6 +19,7 @@
 #The \033 is an Ansi escape character (in octal).
 #The *m alters character attributes (1=bold, 0=standard).
 
+
 #First header group
 echo -e "\033[1m----------GENERAL_INFORMATION----------\033[0m"
 

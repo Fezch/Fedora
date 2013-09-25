@@ -1,20 +1,37 @@
 #!/bin/bash
 
-# FORMAT DIS SHIZ NIGGA
-# this script is desinged to all a user to enter a directory and then veryify that it exists.
-# If the user enters a valid directory that will become their current directory.
-# Once the user has verified that the directory exists they are then prompted to enter a file to verify that the file exits.
+#File and Directory Script
+ 
+#Script created by Andrew Fletcher, Darryl Sabin and Samuel Bates
 
-echo -------- Directory check --------
+#This script is designed to allow a user to enter a directory and
+#then verify that it exists.
+#If the user enters a valid directory, the prompt will move to
+#that directory.
+#Once the script has verified that the directory exists they are
+#then prompted to enter a filename to check that the file exits.
+#The "head -n3" is to show only the first 3 lines of the file
+
+#First header
+echo -e "\033[1m----------DIRECTORY CHECK----------\033[0m"
+
+#Prompts user for a directory
 echo Please enter a directory:
-read DIR
+	read DIR
+
+#Checks if directory exits
 if [ -d $DIR ]
-then cd $DIR && echo "-------- $DIR exists! --------" 
-else echo "-------- Error $DIR does not exist. --------" && exit
+	then cd $DIR
+		echo -e "\033[1m----------$DIR EXISTS----------\033[0m" 
+	else echo -e "\033[1m----------$DIR DOES NOT EXIST----------\033[0m" && exit
 fi
+
+#Prompts user for a filename
 echo Please enter a filename from $DIR:
-read FILE
+	read FILE
+
+#Checks if file exists
 if [ -f $FILE ]
-then echo -------- Preview of $FILE --------; head -n3 $FILE # The -n3 is to show only the first 3 lines of the $FILE.
-else echo "-------- Error $FILE does not exist in $DIR. --------" && exit
+	then echo -e "\033[1m----------PREVIEW OF $FILE----------\033[0m"; head -n3 $FILE
+	else echo -e "\033[1m----------$FILE DOES NOT EXIST IN $DIR----------\033[0m" && exit
 fi
