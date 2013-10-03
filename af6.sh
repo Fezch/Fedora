@@ -32,7 +32,7 @@ if [ "$(id -u)" != "0" ]; then
 				do
 					echo "Cannot compute: Option was not a valid number"
 					echo -n "Please type a number to make your choice: "
-					read $choicetwo
+					read choicetwo
 			done
 
 			if (( $choicetwo == 1 ))
@@ -44,6 +44,23 @@ if [ "$(id -u)" != "0" ]; then
 
 	elif (( $choiceone == 2 ))
 		then echo "-----Delete an existing user-----"
+			echo "Existing users:"
+			cat /etc/passwd | grep -F :/bin/bash | cut -d: -f1
+			echo -n "Please type the name of the user listed above which you wish to delete: "
+				read tobedeleted
+
+			echo "Are you sure you want to delete "$tobedeleted"?"
+			echo -e "\n1. Yes"
+			echo "2. No"
+			echo -ne "\nPlease type a number to make your choice: "
+				read choicethree
+
+				while (( ($choicethree < 1) || ($choicethree > 2) ))
+					do
+						echo "Cannot compute: Option was not a valid number"
+						echo -n "Please type a number to make your choice: "
+						read choicethree
+				done
 
 
 	elif (( $choiceone == 3 ))
