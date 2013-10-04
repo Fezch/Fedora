@@ -18,14 +18,11 @@ if [ "$(id -u)" != "0" ]; then
 		done
 
 	if (( $choiceone == 1 ))
-		then echo "-----Create a new user-----"
-		echo -n "Enter a Username: "
+		then echo -e "\n-----Create a new user-----"
+		echo -ne "\nEnter a Username: "
 			read user
-		echo -n "Enter a Password: "
-			read pass
-		echo "Are you sure you want to create this user?"
+		echo -e "\nAre you sure you want to create this user?"
 		echo -e "\nUsername: $user"
-		echo "Password: $pass"
 		echo -e "\n1. Yes"
 		echo "2. No"
 		echo -ne "\nPlease type a number to make your choice: "
@@ -35,18 +32,63 @@ if [ "$(id -u)" != "0" ]; then
 				do
 					echo "Cannot compute: Option was not a valid number"
 					echo -n "Please type a number to make your choice: "
-					read $choicetwo
+					read choicetwo
 			done
 
 			if (( $choicetwo == 1 ))
-				then echo "Yes"
+				then useradd $user
+				passwd $user
+				echo "-----Closing-----"
 			elif (( $choicetwo == 2 ))
 				then echo "-----Closing-----"
 			fi
 
 	elif (( $choiceone == 2 ))
-		then echo "-----Delete an existing user-----"
+		then echo -e "\n-----Delete an existing user-----"
+			echo -e "\nExisting users:"
+			cat /etc/passwd | grep -F :/bin/bash | cut -d: -f1
+			echo -ne "\nPlease type the name of the user listed above which you wish to delete: "
+				read tobedeleted
 
+			echo -e "\nAre you sure you want to delete this user?: $tobedeleted"
+			echo -e "\n1. Yes"
+			echo "2. No"
+			echo -ne "\nPlease type a number to make your choice: "
+				read choicethree
+
+				while (( ($choicethree < 1) || ($choicethree > 2) ))
+					do
+						echo "Cannot compute: Option was not a valid number"
+						echo -n "Please type a number to make your choice: "
+						read choicethree
+				done
+
+			if (( $choicethree == 1 ))
+				then echo -e "\nWARNING: THIS ACTION CANNOT BE UNDONE"
+				echo -e "\nDo you wish to continue?"
+				echo -e "\n1. Yes"
+				echo "2. No"
+				echo -ne "\nPlease type a number to make your choice: "
+					read choicefour
+
+					while (( ($choicefour < 1) || ($choicefour > 2) ))
+						do
+							echo "Cannot compute: Option was not a valid number"
+							echo -n "Please type a number to make your choice: "
+							read choicefour
+					done
+
+				if (( $choicefour == 1 ))
+					then userdel $tobedeleted
+					echo -e "\nUser $tobedeleted has been deleted"
+					echo "-----Closing-----"
+				elif (( $choicefour == 2 ))
+					then echo "-----Closing-----"
+				fi
+
+			elif (( $choicethree == 2 ))
+				then echo "-----Closing-----"
+			fi
 
 	elif (( $choiceone == 3 ))
 		then echo "-----Closing-----"
