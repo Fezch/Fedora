@@ -1,5 +1,18 @@
 #!/bin/bash
 
+#User Management Script
+
+#Script created by Andrew Fletcher, Darryl Sabin and Samuel Bates
+
+#This script is designed to let the user add or remove users.
+
+#"if" statements have been used to navigate through the various
+#menus and will return appropriate error messages if needed.
+#"while" statements have been used to keep the users choice
+#within the valid margin.
+#If the user is not running as root, the script will not run and
+#will display a message saying why.
+
 if [ "$(id -u)" != "0" ]; then
 	echo -e "\033[1mYou must be the root user to run this script\033[0m"
 		else echo -e "\033[1mRoot user confirmed\033[0m"

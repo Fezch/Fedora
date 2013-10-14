@@ -39,6 +39,6 @@ if echo "$grade" | grep -q [[:alpha:]]
 		then echo "$grade% = A"
 
 #Used for any error not already covered
-else echo -e "\033[1mCannot compute: \033[0mUndefined error"
+	else echo -e "\033[1mCannot compute: \033[0mUndefined error"
 fi
 

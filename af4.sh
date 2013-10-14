@@ -17,12 +17,12 @@ if [ -n "$1" ] && [ -n "$2" ]
 			then
 				if [ -f "$2" ]
 					then echo -e "\033[1m----------DIRECTORY CHECK----------\033[0m"
-					echo "$2 exists"
-					echo -e "\nPreview of $2\n"
+					echo -e "\033[1m$2 EXISTS\033[0m"
+					echo -e "\n\033[1m----------Preview of $2----------\033[0m\n"
 					echo "--------------------"
 					head -n3 $2
 					echo "--------------------"
-					else echo "$2 does not exist in $1"
+					else echo "$2 DOES NOT EXIST IN $1"
 				fi
 			
 			else echo -e "\033[1m----------DIRECTORY CHECK----------\033[0m"
