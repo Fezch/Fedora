@@ -23,12 +23,11 @@ echo Please enter a directory:
 if [ -d $DIR ]
 	then cd $DIR
 		echo -e "\033[1m----------$DIR EXISTS----------\033[0m"
-	echo Please enter a filename from $DIR
+		echo Please enter a filename from $DIR
 		read FILE
-		if [ -f $FILE ]
-			then echo -e "\033[1m----------PREVIEW OF $FILE ----------\033[0m" && head -n3 $FILE
-			else echo -e "\033[1m----------$FILE DOES NOT EXIST IN $DIR ----------\033[0m"
+			if [ -f $FILE ]
+				then echo -e "\033[1m----------PREVIEW OF $FILE ----------\033[0m" && head -n3 $FILE
+				else echo -e "\033[1m----------$FILE DOES NOT EXIST IN $DIR ----------\033[0m"
 			fi
-	else
-		echo -e "\033[1m---------- $DIR DOES NOT EXIST----------\033[0m"
+	else echo -e "\033[1m---------- $DIR DOES NOT EXIST----------\033[0m"
 fi

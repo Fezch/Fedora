@@ -1,15 +1,33 @@
 #!/bin/bash
 
+#Advanced File and Directory Script
+
+#Script created by Andrew Fletcher, Darryl Sabin and Samuel Bates
+
+#This script is an advanced version of the File and Directory
+#Script
+#Instead of prompting the user to enter a valid directory and
+#filename to check, these are passed in as arguments when the
+#script is run.
+#The "head -n3" is to only show the first 3 lines of the file
+
 if [ -n "$1" ] && [ -n "$2" ]
-	then if [ -d "$1" ] && cd $1
-			then if [ -f "$2" ]
-					then echo ---$2 exists ---; head -n3 $2
-					
-					else echo --- $2 does not exist in $1 ---
-					fi
+	then
+		if [ -d "$1" ] && cd $1
+			then
+				if [ -f "$2" ]
+					then echo -e "\033[1m----------DIRECTORY CHECK----------\033[0m"
+					echo "$2 exists"
+					echo -e "\nPreview of $2\n"
+					echo "--------------------"
+					head -n3 $2
+					echo "--------------------"
+					else echo "$2 does not exist in $1"
+				fi
 			
-			else echo --- $1 is not a valid directory ---
-			fi
+			else echo -e "\033[1m----------DIRECTORY CHECK----------\033[0m"
+			echo "$1 is not a valid directory"
+		fi
 	
-	else echo --- Please enter a directory and then a file when invoking the script ---
+	else echo "Please enter a directory and a filename when invoking this script"
 fi
