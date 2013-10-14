@@ -80,8 +80,7 @@ if [ "$(id -u)" != "0" ]; then
 					done
 
 				if (( $choicefour == 1 ))
-					then userdel $tobedeleted
-					echo -e "\nUser $tobedeleted has been deleted"
+					then userdel -r $tobedeleted
 					echo -e "\033[1m-----Closing-----\033[0m"
 				elif (( $choicefour == 2 ))
 					then echo -e "\033[1m-----Closing-----\033[0m"
